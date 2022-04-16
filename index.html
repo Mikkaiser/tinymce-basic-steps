@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.tiny.cloud/1/78ogbrerhv3hvf6bc0u84dmga3knsic695luzowj89c2ew8e/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+  <textarea id="textarea-editor" onchange="getContentFromTextArea()">
+    Welcome to TinyMCE!
+  </textarea>
+
+  <div id="getter-div">
+
+  </div>
+
+  <button onclick="getContentFromTextArea()">
+      Click
+  </button>
+
+  <script>
+    'use-strict'
+
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+    });
+
+
+    function getContentFromTextArea() {
+        let myContent = tinymce.get("textarea-editor").getContent();
+    
+        console.log(myContent);
+
+        let div = document.querySelector('#getter-div');
+
+        div.innerHTML = myContent;
+
+    }
+  </script>
+</body>
+</html>
